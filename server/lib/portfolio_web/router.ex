@@ -17,6 +17,8 @@ defmodule PortfolioWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    resources "/api/projects", ProjectController, except: [:new, :edit]
   end
 
   # Other scopes may use custom stacks.

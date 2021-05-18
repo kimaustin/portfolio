@@ -2,8 +2,8 @@ use Mix.Config
 
 # Configure your database
 config :portfolio, Portfolio.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "portfolio",
+  password: "portfolio",
   database: "portfolio_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
@@ -21,6 +21,11 @@ config :portfolio, PortfolioWeb.Endpoint,
   code_reloader: true,
   check_origin: false,
   watchers: []
+
+config :cors_plug,
+  origin: ["http://localhost:3000"],
+  max_age: 86400,
+  methods: ["GET", "POST", "PATCH", "DELETE"]
 
 # ## SSL Support
 #

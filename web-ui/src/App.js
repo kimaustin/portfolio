@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+// import ReactDOM from 'react-dom';
 
-function App() {
+import { Container } from 'react-bootstrap';
+import { Switch, Route } from 'react-router-dom';
+
+import "./App.scss";
+
+import NavFrame from "./NavFrame";
+import Landing from "./Landing";
+import Work from "./Work";
+import Nektine from "./Nektine";
+import About from "./About";
+
+//Our App Components
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid>
+      <div className="frame">
+        {/* {(success || error) && <AlertBanner error={error} success={success}/>} */}
+        <NavFrame />
+        <Switch>
+          <Route path="/" exact>
+            <Landing />
+          </Route>
+          <Route path="/work" exact>
+            <Work />
+          </Route>
+          <Route path="/nektine" exact>
+            <Nektine />
+          </Route>
+          <Route path="/about" exact>
+            <About />
+          </Route>
+        </Switch>
+      </div>
+    </Container>
   );
 }
 
-export default App;
+// export default connect(({error, success}) => ({error, success}))(App);
