@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import "./App.scss";
 
-import NavFrame from "./NavFrame";
+import NavBar from "./NavBar";
 import Landing from "./Landing";
 import Work from "./Work";
 import Nektine from "./Nektine";
@@ -15,10 +15,11 @@ import About from "./About";
 //Our App Components
 export default function App() {
   return (
-    <Container fluid>
+    // <Container fluid>
+    <div className="container">
       <div className="frame">
+      <NavBar />  
         {/* {(success || error) && <AlertBanner error={error} success={success}/>} */}
-        <NavFrame />
         <Switch>
           <Route path="/" exact>
             <Landing />
@@ -34,7 +35,8 @@ export default function App() {
           </Route>
         </Switch>
       </div>
-    </Container>
+    </div>
+    // </Container>
   );
 }
 

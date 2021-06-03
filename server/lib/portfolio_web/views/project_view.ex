@@ -14,7 +14,7 @@ defmodule PortfolioWeb.ProjectView do
     %{id: project.id,
       name: project.name,
       class: project.class,
-      class_short: project.class_short,
+      class_short: project.class_short, 
       semester: project.semester,
       desc: project.desc,
       imgs: project.imgs,
