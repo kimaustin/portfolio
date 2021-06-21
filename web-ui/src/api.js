@@ -6,12 +6,22 @@ export async function api_get(path) {
     return resp.data;
 }
 
+//------------------------------PROJECTS------------------------------
+
 export function fetch_projects() {
     api_get("/projects").then((data) => store.dispatch({
         type: 'projects/set',
         data: data,
     }));
 }
+
+export function get_project(id) {
+    console.log("it's being called");
+    let path = "/projects/" + id
+    return api_get(path);
+}
+
+//------------------------------DEFAULT------------------------------
 
 export function load_defaults() {
     fetch_projects();

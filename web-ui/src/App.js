@@ -24,7 +24,7 @@ export default function App() {
           <Route path="/" exact>
             <Landing />
           </Route>
-          <Route path="/work" exact>
+          <Route path="/work/:projectId?">
             <Work />
           </Route>
           <Route path="/nektine" exact>
