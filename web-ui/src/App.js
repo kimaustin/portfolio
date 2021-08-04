@@ -1,43 +1,48 @@
-import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
-
-import { Container } from 'react-bootstrap';
-import { Switch, Route } from 'react-router-dom';
-
 import "./App.scss";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import NavBar from "./NavBar";
-import Landing from "./Landing";
-import Work from "./Work";
-import Nektine from "./Nektine";
-import About from "./About";
+import Home from "./components/Home";
+import Main from "./components/Main";
+import Navigation from "./components/Navigation";
+import Status from "./components/Status";
+import MobileBar from "./components/MobileBar";
+import { Button2 } from "./components/ButtonElement";
+import DarkModeButton from "./components/DarkModeButton";
+import Works from "./components/Works";
+import WorkExpanded from "./components/Works/WorkExpanded"
 
 //Our App Components
-export default function App() {
+function App() {
+
+  const [isOpen, setIsOpen] = useState(true);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    // <Container fluid>
-    <div className="container">
-      <div className="frame">
-      <NavBar />  
-        {/* {(success || error) && <AlertBanner error={error} success={success}/>} */}
+    <Router>
+      <MobileBar isOpen={isOpen} toggle={toggle} />
+      <Navigation toggle={toggle} />
         <Switch>
           <Route path="/" exact>
-            <Landing />
+            <Home />
           </Route>
-          <Route path="/work/:projectId?">
-            <Work />
+          <Route path="/works" exact>
+            <Works />
           </Route>
-          <Route path="/nektine" exact>
-            <Nektine />
+          <Route path="/works/:workId?" >
+            <WorkExpanded />
           </Route>
-          <Route path="/about" exact>
-            <About />
+          <Route path="/main" exact>
+            <Main/>
           </Route>
         </Switch>
-      </div>
-    </div>
-    // </Container>
+      <Status />
+      <DarkModeButton />
+    </Router>
   );
 }
 
-// export default connect(({error, success}) => ({error, success}))(App);
+export default App;
